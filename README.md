@@ -63,6 +63,6 @@ hugo.toml        网站配置
 
 原文章 `/init/`、关于页 `/about/`、标签页 `/tags/`（含 `#notice` 锚点）、`/images/favicon.ico`、`/archives/ysc.json`、RSS `/feed.xml` 和搜索索引 `/search.json` 地址保留。原始文章日期、正文与归档资源保留。
 
-新版使用系统字体、响应式布局、系统深浅色及手动主题切换、客户端搜索、标签归档、RSS 和 sitemap。默认不加载第三方统计、评论、远程脚本或字体。旧版没有启用的 Disqus/Gitalk 不再保留；历史代码仍可从 Git 提交记录找回。原 LICENSE 保留。
+新版使用系统字体、响应式布局、系统深浅色及手动主题切换、客户端搜索、标签归档和 sitemap。页面不展示 RSS 入口或订阅区块，但保留 `/feed.xml` 以兼容已有订阅。默认不加载第三方统计、评论、远程脚本或字体。旧版没有启用的 Disqus/Gitalk 不再保留；历史代码仍可从 Git 提交记录找回。原 LICENSE 保留。
 
 Hugo 的分页地址为 `/page/2/`，不再使用 Jekyll 的 `/page2/`；当前原站仅一篇文章，没有需要迁移的第二页。

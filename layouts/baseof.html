@@ -13,7 +13,6 @@
   <meta property="og:description" content="{{ .Description | default site.Params.description }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <link rel="icon" href="{{ "images/favicon.ico" | relURL }}" sizes="any">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ "feed.xml" | relURL }}">
   <script>
     document.documentElement.classList.add('js');
     try {
@@ -39,7 +38,7 @@
     <main id="main" tabindex="-1">{{ block "main" . }}{{ end }}</main>
     <footer class="site-footer">
       <span>© {{ now.Year }} qpg93 <span class="footer-note">· Notes on life and everything in between</span></span>
-      <div><a href="{{ site.Params.github }}" rel="me">GitHub ↗</a><a href="{{ "feed.xml" | relURL }}">RSS ↗</a><span class="built-with">Built with Hugo</span></div>
+      <div><a href="{{ site.Params.github }}" rel="me">GitHub ↗</a><span class="built-with">Built with Hugo</span></div>
     </footer>
   </div>
 </body>

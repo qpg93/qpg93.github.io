@@ -24,7 +24,6 @@
   <aside class="sidebar" aria-label="About this blog">
     <section class="about-card"><span class="eyebrow">BEHIND THE WORDS</span><div class="profile-monogram" aria-hidden="true">q.</div><h2>Hi, I'm qpg93.</h2><p>A personal blog.<br>A little room to think out loud.</p><a class="text-link" href="{{ "about/" | relURL }}">More about me <span aria-hidden="true">↗</span></a></section>
     {{ with site.Taxonomies.tags }}<section class="sidebar-tags"><div class="section-heading"><h2>Explore by tag</h2><span aria-hidden="true">↙</span></div><div class="tag-list">{{ range .Alphabetical }}<a class="tag" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}<span>{{ .Count }}</span></a>{{ end }}</div></section>{{ end }}
-    <a class="rss-card" href="{{ "feed.xml" | relURL }}"><span><strong>Take your time.</strong><small>Follow along via RSS</small></span><span aria-hidden="true">↗</span></a>
   </aside>
 </div>
 {{ end }}

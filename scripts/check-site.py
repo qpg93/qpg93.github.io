@@ -72,6 +72,9 @@ assert post['tags'] == ['notice']
 assert all(p['url'] != '/about/' for p in posts)
 assert 'notice' in pages[ROOT / 'tags/index.html'].ids
 assert "qpg93's personal blog" in (ROOT / 'index.html').read_text()
+for path in pages:
+    assert 'rss-card' not in path.read_text(), f'Unexpected RSS block: {path}'
+    assert not any('feed.xml' in url for url in pages[path].links), f'Unexpected RSS link: {path}'
 # Interface copy must remain English; Chinese is allowed in post content.
 for folder, pattern in [('layouts', '*.html'), ('static/js', '*.js')]:
     for source in Path(folder).rglob(pattern):
