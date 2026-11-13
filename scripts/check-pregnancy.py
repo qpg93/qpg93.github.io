@@ -107,7 +107,7 @@ assert all(c['dots'] == c['buttons'] and c['dots'] >= 2 and c['tables'] == 1 and
 assert all(ref in parsed.ids for ref in parsed.references)
 assert 'ZgotmplZ' not in page and '<!-- raw HTML omitted -->' not in page
 assert 'date: 2026-05-16' in source
-assert 'title: "一起生长（持续更新）"' in source
+assert 'title: "Emma 与 Yoyo 的日子（持续更新）"' in source
 assert re.search(r'^draft: (?:true|false)$', source, re.M)
 assert 'subtitle:' not in source
 assert 'Emma' in source and 'Yoyo' in source

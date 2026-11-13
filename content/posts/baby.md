@@ -1,5 +1,5 @@
 ---
-title: "一起生长（持续更新）"
+title: "Emma 与 Yoyo 的日子（持续更新）"
 description: "陪 Emma 和 Yoyo 走过孕期：从等待确认到一次次看见成长"
 date: 2026-05-16
 slug: baby
