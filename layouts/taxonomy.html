@@ -1,0 +1,7 @@
+{{ define "main" }}
+<header class="page-heading"><span class="eyebrow">EXPLORE BY TOPIC</span><h1>标签<span class="accent">。</span></h1><p>换一个角度，发现感兴趣的内容。</p></header>
+<div class="tag-list tag-directory">{{ range .Data.Terms.Alphabetical }}<a class="tag" href="#{{ .Page.LinkTitle }}">{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a>{{ end }}</div>
+{{ range .Data.Terms.Alphabetical }}
+<section class="tag-section" id="{{ .Page.LinkTitle }}"><div class="section-heading"><h2><a href="{{ .Page.RelPermalink }}"># {{ .Page.LinkTitle }}</a></h2><span class="muted">{{ .Count }} 篇</span></div>{{ range .Pages.ByDate.Reverse }}{{ partial "post-card.html" . }}{{ end }}</section>
+{{ else }}<p class="empty-state">还没有标签。</p>{{ end }}
+{{ end }}

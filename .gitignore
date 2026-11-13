@@ -1,0 +1,8 @@
+# Hugo generated files (never commit)
+/public/
+/resources/_gen/
+/.hugo_build.lock
+/hugo_stats.json
+
+# Editor and OS files
+.DS_Store

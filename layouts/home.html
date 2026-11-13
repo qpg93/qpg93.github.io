@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="hero" aria-labelledby="home-title">
+  <div class="eyebrow"><span class="status-dot"></span> A PERSONAL SPACE</div>
+  <h1 id="home-title">记录，<br>也思考<span class="accent">。</span></h1>
+  <div class="hero-bottom"><p>在此记录想记录的一切。<br>关于生活、探索，以及沿途的发现。</p><span class="hero-index" aria-hidden="true">随笔 / 笔记 / 想法</span></div>
+</section>
+<div class="home-grid">
+  <section aria-labelledby="posts-title">
+    <div class="section-heading"><h2 id="posts-title">文章<span class="count">{{ len (where site.RegularPages "Section" "posts") }}</span></h2><span class="eyebrow">THE JOURNAL</span></div>
+    <div class="search" hidden>
+      <label class="sr-only" for="search-input">搜索文章</label>
+      <span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="搜索标题、正文或标签…" autocomplete="off" data-index="{{ "search.json" | relURL }}">
+      <kbd aria-hidden="true">/</kbd>
+    </div>
+    <div id="search-results" hidden></div>
+    <p id="search-status" class="muted" role="status" aria-live="polite"></p>
+    <div id="post-list">
+      {{ $paginator := .Paginate (where site.RegularPages "Section" "posts") }}
+      {{ range $paginator.Pages }}{{ partial "post-card.html" . }}{{ else }}<p class="empty-state">还没有文章，故事即将开始。</p>{{ end }}
+      {{ partial "pagination.html" . }}
+    </div>
+  </section>
+  <aside class="sidebar" aria-label="博客信息">
+    <section class="about-card"><span class="eyebrow">BEHIND THE WORDS</span><div class="profile-monogram" aria-hidden="true">q.</div><h2>你好，我是 qpg93。</h2><p>这里是我的个人博客，<br>也是一块自由记录的地方。</p><a class="text-link" href="{{ "about/" | relURL }}">关于这个博客 <span aria-hidden="true">↗</span></a></section>
+    {{ with site.Taxonomies.tags }}<section class="sidebar-tags"><div class="section-heading"><h2>按标签阅读</h2><span aria-hidden="true">↙</span></div><div class="tag-list">{{ range .Alphabetical }}<a class="tag" href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}<span>{{ .Count }}</span></a>{{ end }}</div></section>{{ end }}
+    <a class="rss-card" href="{{ "feed.xml" | relURL }}"><span><strong>慢慢写，慢慢读。</strong><small>通过 RSS 订阅更新</small></span><span aria-hidden="true">↗</span></a>
+  </aside>
+</div>
+{{ end }}

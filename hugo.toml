@@ -1,0 +1,40 @@
+baseURL = 'https://qpg93.github.io/'
+locale = 'zh-CN'
+defaultContentLanguage = 'zh'
+title = "qpg93's blog"
+hasCJKLanguage = true
+capitalizeListTitles = false
+enableRobotsTXT = true
+disableKinds = ['section']
+summaryLength = 100
+
+[params]
+  description = 'qpg93的个人博客'
+  author = 'qpg93'
+  email = 'qing.peng@outlook.fr'
+  github = 'https://github.com/qpg93'
+
+[pagination]
+  pagerSize = 8
+  path = 'page'
+
+[permalinks.page]
+  posts = '/:slug/'
+
+[taxonomies]
+  tag = 'tags'
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[outputFormats.RSS]
+  baseName = 'feed'
+
+[outputFormats.JSON]
+  baseName = 'search'
+
+[markup.highlight]
+  style = 'github-dark'
+
+[markup.goldmark.renderer]
+  unsafe = false
