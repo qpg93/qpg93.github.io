@@ -1,0 +1,43 @@
+/* Accessible, local SVG charts. Text/table fallback works without JavaScript. */
+.prose .data-chart{margin:28px 0 38px;padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--surface);min-width:0}
+.data-chart figcaption h3{font-size:20px;margin:10px 0 8px;line-height:1.5}
+.data-chart figcaption p,.data-chart .chart-note{font-size:12px;line-height:1.85;color:var(--muted);margin:8px 0 12px}
+.chart-scroll{overflow-x:auto;overscroll-behavior-x:contain}
+.chart-svg{display:block;width:100%;min-width:480px;height:auto;overflow:visible}
+.chart-tick,.chart-axis-label{fill:var(--muted);font-family:var(--mono);font-size:11px}
+.chart-axis-label{font-size:10px}
+.chart-gridline{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.chart-line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.chart-dot{fill:var(--surface);stroke:var(--accent);stroke-width:2;vector-effect:non-scaling-stroke}
+.chart-dot.is-active{fill:var(--accent);stroke-width:4}
+.chart-cursor{stroke:var(--muted);stroke-width:1;stroke-dasharray:4 5;pointer-events:none;vector-effect:non-scaling-stroke}
+.chart-range{stroke:var(--coral);stroke-width:3;vector-effect:non-scaling-stroke}
+.data-chart-estimated{border-style:dashed}
+.data-chart-estimated .eyebrow{color:var(--coral)}
+.data-chart-estimated .chart-line{stroke:var(--coral);stroke-dasharray:6 5}
+.data-chart-estimated .chart-dot{stroke:var(--coral)}
+.data-chart-estimated .chart-dot.is-active{fill:var(--coral)}
+.chart-buttons{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 12px}
+.chart-buttons button{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--muted);font-size:11px;min-height:34px}
+.chart-buttons button:hover,.chart-buttons button[aria-pressed=true]{background:var(--soft);color:var(--accent);border-color:var(--accent)}
+.chart-readout{display:block;font-family:var(--mono);font-size:12px;min-height:3.5em;color:var(--text);overflow-wrap:anywhere}
+.chart-tooltip{position:fixed;z-index:30;max-width:min(320px,calc(100vw - 16px));padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text);box-shadow:var(--glass-shadow);font-family:var(--mono);font-size:12px;pointer-events:none;overflow-wrap:anywhere}
+.chart-data{margin-top:12px;font-size:12px}
+.chart-data summary{cursor:pointer;color:var(--accent)}
+.prose .chart-data table{width:100%;font-size:12px}
+.chart-data caption{text-align:left;color:var(--muted);padding:12px 0}
+.prose .data-chart .chart-note{margin:18px 0 0;border-top:1px solid var(--line);padding-top:12px}
+.prose .pregnancy-diagram{margin:28px 0;padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--surface)}
+.pregnancy-diagram figcaption h3{font-size:20px;margin:10px 0 12px}
+.pregnancy-diagram svg{display:block;width:100%;height:auto}
+.diagram-envelope{fill:var(--soft);stroke:var(--line);stroke-width:2}
+.diagram-body{fill:var(--orb-pink);stroke:var(--coral);stroke-width:2}
+.diagram-detail{fill:none;stroke:var(--coral);stroke-width:2;stroke-linecap:round}
+.diagram-highlight{fill:none;stroke:var(--accent);stroke-width:8;stroke-linecap:round}
+.diagram-leader{stroke:var(--accent);stroke-width:1.5}
+.diagram-marker{fill:var(--accent)}
+.diagram-label{fill:var(--text);font-family:var(--font-sans);font-size:16px}
+.diagram-small{fill:var(--muted);font-family:var(--font-sans);font-size:11px}
+.prose .diagram-source{font-size:12px;color:var(--muted);line-height:1.85;margin-bottom:0}
+@media(max-width:620px){.prose .data-chart,.prose .pregnancy-diagram{padding:16px;margin-left:-6px;margin-right:-6px;border-radius:16px}.data-chart figcaption h3{font-size:18px}.pregnancy-diagram svg{min-width:420px}.pregnancy-diagram{overflow-x:auto}}
+@media(forced-colors:active){.chart-line,.chart-dot,.chart-range,.chart-cursor{stroke:CanvasText}.chart-dot.is-active{fill:CanvasText}.chart-tick,.chart-axis-label{fill:CanvasText}.chart-gridline{stroke:GrayText}}

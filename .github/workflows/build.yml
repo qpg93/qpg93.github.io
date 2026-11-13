@@ -35,6 +35,10 @@ jobs:
         run: hugo --gc --minify --panicOnWarning
       - name: Test generated site
         run: python3 scripts/check-site.py
+      - name: Check pregnancy charts
+        run: |
+          hugo --buildDrafts --destination "${RUNNER_TEMP}/pregnancy-preview" --minify --panicOnWarning
+          python3 scripts/check-pregnancy.py "${RUNNER_TEMP}/pregnancy-preview"
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3

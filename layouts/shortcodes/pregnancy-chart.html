@@ -1,0 +1,53 @@
+{{- $key := .Get 0 -}}
+{{- $chart := index .Page.Params.charts $key -}}
+{{- if not $chart -}}
+  {{- errorf "Missing chart %q in %s" $key .Page.File.Path -}}
+{{- else -}}
+  {{- $id := printf "chart-%s-%d" .Page.File.UniqueID .Ordinal -}}
+  {{- $max := float $chart.max -}}
+  {{- $xmax := float $chart.xmax -}}
+  {{- $coordinates := slice -}}
+  {{- range $chart.points -}}
+    {{- $x := add 72 (mul 568 (div (float .x) $xmax)) -}}
+    {{- $y := sub 250 (mul 208 (div (float .value) $max)) -}}
+    {{- $coordinates = $coordinates | append (printf "%.2f,%.2f" $x $y) -}}
+  {{- end -}}
+<figure class="data-chart{{ if $chart.estimated }} data-chart-estimated{{ end }}" data-chart data-chart-key="{{ $key }}">
+  <figcaption id="{{ $id }}-caption"><span class="eyebrow">{{ $chart.kicker }}</span><h3>{{ $chart.title }}</h3><p>{{ $chart.description }}</p></figcaption>
+  <div class="chart-scroll">
+    <svg class="chart-svg" viewBox="0 0 720 310" role="img" aria-labelledby="{{ $id }}-title {{ $id }}-desc">
+      <title id="{{ $id }}-title">{{ $chart.title }}</title>
+      <desc id="{{ $id }}-desc">{{ $chart.description }}. {{ range $chart.points }}{{ .label }}: {{ .display | default (printf "%v %s" .value $chart.unit) }}; {{ end }}</desc>
+      <text class="chart-axis-label" x="72" y="22">{{ $chart.unit }}</text>
+      {{ range seq 0 4 }}
+        {{ $y := sub 250 (mul . 52) }}
+        <line class="chart-gridline" x1="72" x2="640" y1="{{ $y }}" y2="{{ $y }}" />
+        <text class="chart-tick" x="58" y="{{ add $y 4 }}" text-anchor="end">{{ mul (div $max 4) . }}</text>
+      {{ end }}
+      <polyline class="chart-line" points="{{ delimit $coordinates " " }}" />
+      <line class="chart-cursor" x1="72" x2="72" y1="42" y2="250" hidden />
+      {{ range $index, $point := $chart.points }}
+        {{ $x := add 72 (mul 568 (div (float $point.x) $xmax)) }}
+        {{ $y := sub 250 (mul 208 (div (float $point.value) $max)) }}
+        {{ if and $point.low $point.high }}
+          {{ $lowY := sub 250 (mul 208 (div (float $point.low) $max)) }}
+          {{ $highY := sub 250 (mul 208 (div (float $point.high) $max)) }}
+          <g class="chart-range"><line x1="{{ $x }}" x2="{{ $x }}" y1="{{ $lowY }}" y2="{{ $highY }}" /><line x1="{{ sub $x 8 }}" x2="{{ add $x 8 }}" y1="{{ $lowY }}" y2="{{ $lowY }}" /><line x1="{{ sub $x 8 }}" x2="{{ add $x 8 }}" y1="{{ $highY }}" y2="{{ $highY }}" /></g>
+        {{ end }}
+        <circle class="chart-dot" cx="{{ $x }}" cy="{{ $y }}" r="5" data-chart-dot="{{ $index }}"><title>{{ $point.label }}: {{ $point.display | default (printf "%v %s" $point.value $chart.unit) }}</title></circle>
+        <text class="chart-tick" x="{{ $x }}" y="278" text-anchor="middle">{{ $point.label }}</text>
+      {{ end }}
+      <text class="chart-axis-label" x="640" y="302" text-anchor="end">{{ $chart.axis }}</text>
+    </svg>
+  </div>
+  <div class="chart-tooltip" data-chart-tooltip aria-hidden="true" hidden></div>
+  <div class="chart-controls" hidden>
+    <div class="chart-buttons" role="group" aria-label="Select a data point: {{ $chart.title }}">
+      {{ range $index, $point := $chart.points }}<button type="button" data-chart-point="{{ $index }}" data-label="{{ $point.label }}" data-value="{{ $point.display | default (printf "%v %s" $point.value $chart.unit) }}" aria-pressed="false">{{ $point.label }}</button>{{ end }}
+    </div>
+    <output class="chart-readout" aria-live="polite" aria-atomic="true">{{ if $chart.estimated }}Select a point to see its estimate.{{ else }}Select a point to see its recorded value.{{ end }}</output>
+  </div>
+  <details class="chart-data"><summary>View recorded data</summary><table><caption>{{ $chart.title }} ({{ $chart.unit }})</caption><thead><tr><th scope="col">{{ $chart.axis }}</th><th scope="col">{{ if $chart.estimated }}Chat-based estimate{{ else }}Recorded value{{ end }}</th></tr></thead><tbody>{{ range $chart.points }}<tr><th scope="row">{{ .label }}</th><td>{{ .display | default (printf "%v" .value) }}</td></tr>{{ end }}</tbody></table></details>
+  <p class="chart-note">{{ $chart.note }}</p>
+</figure>
+{{- end -}}

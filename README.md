@@ -39,6 +39,19 @@ hugo --gc --minify --panicOnWarning
 python3 scripts/check-site.py  # 可选的构建产物检查，需要 Python 3
 ```
 
+请在项目根目录运行预览命令，或通过 `hugo server -D --source /项目绝对路径` 指定目录，否则 Hugo 找不到模板和配置。文章预览地址为 `http://localhost:1313/baby/`。
+
+孕期文章的图表由 `content/posts/baby.md` 中的 `charts` 数据生成；使用 `pregnancy-chart` shortcode 绘制内联 SVG，`pregnancy-diagram` 绘制带来源的科普示意图。鼠标、触控和键盘交互使用原生 JavaScript；禁用脚本仍可读图和展开数据表。报告转录与聊天估算必须分开标注，范围值不得写成精确测量，不提交原始报告或对话资料。Apple 字体优先使用设备已有的 San Francisco、苹方及 SF Mono，不分发字体文件。
+
+发布前可额外检查孕期文章：
+
+```sh
+hugo --buildDrafts --destination /tmp/qpg93-baby-preview --minify --panicOnWarning
+python3 scripts/check-pregnancy.py /tmp/qpg93-baby-preview
+```
+
+该检查覆盖图表结构、数据和基础隐私规则，不代替医学核对或浏览器实测。无需安装浏览器；不要为测试下载 Playwright、Chromium 等工具。`draft: true` 只阻止网页发布，不能隐藏公开仓库中的源码。
+
 构建结果在 `public/`，已加入忽略列表，不提交到仓库。升级 Hugo 时同时更新工作流内固定版本与本说明。
 
 ## GitHub Pages 一次性设置

@@ -4,7 +4,8 @@
   <article>
     <header class="article-header">
       <span class="eyebrow">{{ if eq .Section "posts" }}THE JOURNAL{{ else }}A LITTLE ABOUT ME{{ end }}</span>
-      <h1>{{ .Title }}</h1>
+      <h1{{ with .Params.lang }} lang="{{ . }}"{{ end }}>{{ .Title }}</h1>
+      {{ with .Description }}<p class="article-description"{{ with $.Params.lang }} lang="{{ . }}"{{ end }}>{{ . }}</p>{{ end }}
       {{ if eq .Section "posts" }}<div class="post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span>{{ .Params.author | default site.Params.author }}</span>{{ range .GetTerms "tags" }}<a href="{{ .RelPermalink }}"># {{ .LinkTitle }}</a>{{ end }}</div>{{ end }}
     </header>
     {{ if and (eq .Section "posts") (gt (len .Fragments.Headings) 0) }}<details class="toc"><summary>On this page</summary>{{ .TableOfContents }}</details>{{ end }}

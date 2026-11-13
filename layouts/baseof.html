@@ -21,7 +21,9 @@
     } catch (_) {}
   </script>
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  {{ if .Params.charts }}<link rel="stylesheet" href="{{ "css/charts.css" | relURL }}">{{ end }}
   <script src="{{ "js/site.js" | relURL }}" defer></script>
+  {{ if .Params.charts }}<script src="{{ "js/charts.js" | relURL }}" defer></script>{{ end }}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
