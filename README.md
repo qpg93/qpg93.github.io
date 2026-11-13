@@ -12,7 +12,8 @@
    title: 我的新文章
    date: 2026-11-13
    slug: my-note
-   tags: [随笔]
+   tags: [notes]
+   lang: zh-CN
    description: 一句话摘要，可选。
    draft: false
    ---
@@ -25,6 +26,8 @@
 文章地址由 `slug` 决定，例如 `/my-note/`。发布后不要随意修改；需要修改时可以在 front matter 添加 `aliases: [/旧地址/]`。`draft: true` 的文章不发布，未来日期的文章默认也不发布。使用 `<!--more-->` 可指定摘要截断位置。
 
 图片放在 `static/images/`，在文章中使用 `![说明](/images/example.jpg)`。关于页编辑 `content/about.md`；站名、简介和联系方式编辑 `hugo.toml`。
+
+网页界面统一使用英文，只有文章标题和内容（包括正文摘要和目录）允许使用中文。标签、文章元信息及站点介绍应使用英文；中文文章可在 front matter 中添加 `lang: zh-CN` 标记正文语言。项目文档和日常交流仍可使用中文。
 
 ## 本地预览（可选）
 

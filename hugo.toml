@@ -1,6 +1,6 @@
 baseURL = 'https://qpg93.github.io/'
-locale = 'zh-CN'
-defaultContentLanguage = 'zh'
+locale = 'en-US'
+defaultContentLanguage = 'en'
 title = "qpg93's blog"
 hasCJKLanguage = true
 capitalizeListTitles = false
@@ -9,7 +9,7 @@ disableKinds = ['section']
 summaryLength = 100
 
 [params]
-  description = 'qpg93的个人博客'
+  description = "qpg93's personal blog"
   author = 'qpg93'
   email = 'qing.peng@outlook.fr'
   github = 'https://github.com/qpg93'

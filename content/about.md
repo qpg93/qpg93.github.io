@@ -1,13 +1,13 @@
 ---
-title: 关于
+title: About
 url: /about/
-description: 关于这个博客，以及如何联系我。
+description: A little about this blog and how to get in touch.
 ---
 
-## 关于我
+## About me
 
-如果你对我的文章有任何疑问，或者发现文章中存在错误，可以通过邮件与我联系。
+If you have a question about a post or spot an error, please get in touch by email.
 
-## 版权声明
+## Copyright
 
-本博客文章都是我的原创文章，版权归我所有，转载请与我联系获得授权许可。
+All posts on this blog are my original work, and I retain the copyright. Please contact me for permission before republishing.

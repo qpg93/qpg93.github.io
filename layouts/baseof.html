@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,20 +25,20 @@
   <script src="{{ "js/site.js" | relURL }}" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">跳到正文</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="site-shell">
     <header class="site-header">
-      <a class="brand" href="{{ site.Home.RelPermalink }}" aria-label="qpg93 博客首页"><span class="brand-mark" aria-hidden="true">q.</span><span>qpg93<span class="brand-suffix"> / blog</span></span></a>
-      <nav aria-label="主导航">
-        <a href="{{ site.Home.RelPermalink }}" {{ if .IsHome }}aria-current="page"{{ end }}>文章</a>
-        <a href="{{ "tags/" | relURL }}" {{ if eq .Section "tags" }}aria-current="page"{{ end }}>标签</a>
-        <a href="{{ "about/" | relURL }}" {{ if eq .RelPermalink "/about/" }}aria-current="page"{{ end }}>关于</a>
-        <button class="theme-toggle" type="button" aria-label="切换深浅主题" title="切换深浅主题"><span aria-hidden="true">◐</span></button>
+      <a class="brand" href="{{ site.Home.RelPermalink }}" aria-label="qpg93 blog home"><span class="brand-mark" aria-hidden="true">q.</span><span>qpg93<span class="brand-suffix"> / blog</span></span></a>
+      <nav aria-label="Main navigation">
+        <a href="{{ site.Home.RelPermalink }}" {{ if .IsHome }}aria-current="page"{{ end }}>Journal</a>
+        <a href="{{ "tags/" | relURL }}" {{ if eq .Section "tags" }}aria-current="page"{{ end }}>Tags</a>
+        <a href="{{ "about/" | relURL }}" {{ if eq .RelPermalink "/about/" }}aria-current="page"{{ end }}>About</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle light and dark mode"><span aria-hidden="true">◐</span></button>
       </nav>
     </header>
     <main id="main" tabindex="-1">{{ block "main" . }}{{ end }}</main>
     <footer class="site-footer">
-      <span>© {{ now.Year }} qpg93 <span class="footer-note">· 记录想记录的一切</span></span>
+      <span>© {{ now.Year }} qpg93 <span class="footer-note">· Notes on life and everything in between</span></span>
       <div><a href="{{ site.Params.github }}" rel="me">GitHub ↗</a><a href="{{ "feed.xml" | relURL }}">RSS ↗</a><span class="built-with">Built with Hugo</span></div>
     </footer>
   </div>

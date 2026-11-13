@@ -1,8 +1,8 @@
 {{ $p := .Paginator }}
 {{ if gt $p.TotalPages 1 }}
-<nav class="pagination" aria-label="文章分页">
-  <span>{{ with $p.Prev }}<a href="{{ .URL }}" rel="prev">← 上一页</a>{{ end }}</span>
+<nav class="pagination" aria-label="Post pagination">
+  <span>{{ with $p.Prev }}<a href="{{ .URL }}" rel="prev">← Previous</a>{{ end }}</span>
   <span class="muted">{{ $p.PageNumber }} / {{ $p.TotalPages }}</span>
-  <span>{{ with $p.Next }}<a href="{{ .URL }}" rel="next">下一页 →</a>{{ end }}</span>
+  <span>{{ with $p.Next }}<a href="{{ .URL }}" rel="next">Next →</a>{{ end }}</span>
 </nav>
 {{ end }}

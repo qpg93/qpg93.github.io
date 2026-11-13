@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Check Hugo output using Python's standard library only."""
 import json
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -70,8 +71,16 @@ assert '在此记录想记录的一切。' in post['content']
 assert post['tags'] == ['notice']
 assert all(p['url'] != '/about/' for p in posts)
 assert 'notice' in pages[ROOT / 'tags/index.html'].ids
-assert '个人技术博客' not in (ROOT / 'index.html').read_text()
-assert 'qpg93的个人博客' in (ROOT / 'index.html').read_text()
+assert "qpg93's personal blog" in (ROOT / 'index.html').read_text()
+# Interface copy must remain English; Chinese is allowed in post content.
+for folder, pattern in [('layouts', '*.html'), ('static/js', '*.js')]:
+    for source in Path(folder).rglob(pattern):
+        assert not re.search(r'[\u3400-\u4dbf\u4e00-\u9fff]', source.read_text()), f'Non-English UI copy: {source}'
+for name in ['about/index.html', '404.html']:
+    page = (ROOT / name).read_text()
+    assert not re.search(r'[\u3400-\u4dbf\u4e00-\u9fff]', page), f'Non-English page: {name}'
+for path in pages:
+    assert re.search(r'<html\b[^>]*\blang=[\"\']?en(?:-[A-Za-z]+)?(?:[\"\'\s>])', path.read_text()), f'Expected English document: {path}'
 for name in ['feed.xml', 'sitemap.xml']:
     ET.parse(ROOT / name)
 print(f'OK: {len(pages)} HTML pages, local links, anchors, original post, search index, RSS and sitemap')

@@ -45,9 +45,9 @@
     const link = element('a', '', post.title);
     link.href = post.url;
     heading.append(link);
-    const read = element('a', 'read-link', '阅读全文 ↗');
+    const read = element('a', 'read-link', 'Read entry ↗');
     read.href = post.url;
-    read.setAttribute('aria-label', `阅读：${post.title}`);
+    read.setAttribute('aria-label', `Read: ${post.title}`);
     article.append(meta, heading, element('p', '', post.description), read);
     return article;
   }
@@ -59,7 +59,7 @@
     list.hidden = !!query;
     status.textContent = '';
     if (!query) return;
-    status.textContent = '正在搜索…';
+    status.textContent = 'Searching…';
     try {
       const posts = await loadIndex();
       if (request !== revision) return;
@@ -69,10 +69,10 @@
         return words.every(word => haystack.includes(word));
       });
       results.replaceChildren(...matches.map(card));
-      status.textContent = matches.length ? `找到 ${matches.length} 篇文章` : '没有找到相关文章，试试其他关键词。';
+      status.textContent = matches.length ? `${matches.length} ${matches.length === 1 ? 'entry' : 'entries'} found` : 'No matches. Try a different search.';
     } catch (_) {
       if (request !== revision) return;
-      status.textContent = '搜索暂时不可用，你仍可以浏览下方文章。';
+      status.textContent = 'Search is temporarily unavailable. You can still browse the entries below.';
       results.hidden = true;
       list.hidden = false;
     }
