@@ -29,15 +29,9 @@
 .prose .data-chart .chart-note{margin:18px 0 0;border-top:1px solid var(--line);padding-top:12px}
 .prose .pregnancy-diagram{margin:28px 0;padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--surface)}
 .pregnancy-diagram figcaption h3{font-size:20px;margin:10px 0 12px}
-.pregnancy-diagram svg{display:block;width:100%;height:auto}
-.diagram-envelope{fill:var(--soft);stroke:var(--line);stroke-width:2}
-.diagram-body{fill:var(--orb-pink);stroke:var(--coral);stroke-width:2}
-.diagram-detail{fill:none;stroke:var(--coral);stroke-width:2;stroke-linecap:round}
-.diagram-highlight{fill:none;stroke:var(--accent);stroke-width:8;stroke-linecap:round}
-.diagram-leader{stroke:var(--accent);stroke-width:1.5}
-.diagram-marker{fill:var(--accent)}
-.diagram-label{fill:var(--text);font-family:var(--font-sans);font-size:16px}
-.diagram-small{fill:var(--muted);font-family:var(--font-sans);font-size:11px}
+.prose .explainer-image{display:block;width:100%;height:auto;margin:20px auto;background:#fff;border-radius:12px}
+.explainer-image-nt{max-width:360px}
+.explainer-image-position{max-width:560px}
 .prose .diagram-source{font-size:12px;color:var(--muted);line-height:1.85;margin-bottom:0}
-@media(max-width:620px){.prose .data-chart,.prose .pregnancy-diagram{padding:16px;margin-left:-6px;margin-right:-6px;border-radius:16px}.data-chart figcaption h3{font-size:18px}.pregnancy-diagram svg{min-width:420px}.pregnancy-diagram{overflow-x:auto}}
+@media(max-width:620px){.prose .data-chart,.prose .pregnancy-diagram{padding:16px;margin-left:-6px;margin-right:-6px;border-radius:16px}.data-chart figcaption h3{font-size:18px}}
 @media(forced-colors:active){.chart-line,.chart-dot,.chart-range,.chart-cursor{stroke:CanvasText}.chart-dot.is-active{fill:CanvasText}.chart-tick,.chart-axis-label{fill:CanvasText}.chart-gridline{stroke:GrayText}}

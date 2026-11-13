@@ -41,7 +41,7 @@ python3 scripts/check-site.py  # 可选的构建产物检查，需要 Python 3
 
 请在项目根目录运行预览命令，或通过 `hugo server -D --source /项目绝对路径` 指定目录，否则 Hugo 找不到模板和配置。文章预览地址为 `http://localhost:1313/baby/`。
 
-孕期文章的图表由 `content/posts/baby.md` 中的 `charts` 数据生成；使用 `pregnancy-chart` shortcode 绘制内联 SVG，`pregnancy-diagram` 绘制带来源的科普示意图。鼠标、触控和键盘交互使用原生 JavaScript；禁用脚本仍可读图和展开数据表。报告转录与聊天估算必须分开标注，范围值不得写成精确测量，不提交原始报告或对话资料。Apple 字体优先使用设备已有的 San Francisco、苹方及 SF Mono，不分发字体文件。
+孕期文章的图表由 `content/posts/baby.md` 中的 `charts` 数据生成；使用 `pregnancy-chart` shortcode 绘制内联 SVG，`pregnancy-diagram` 展示获准转载的 OpenStax 教材插图。两张图片在 `static/images/pregnancy/` 本地托管，版权与 CC BY-NC-SA 4.0 许可见其中的 `ATTRIBUTION.txt`；它们不适用仓库代码的 Apache 许可。图像来源署名不使用 Wiki 链接。术语与医学参考使用原生折叠区块，不依赖外站加载。鼠标、触控和键盘交互使用原生 JavaScript；禁用脚本仍可读图和展开数据表。报告转录与聊天估算必须分开标注，范围值不得写成精确测量，不提交原始报告或对话资料。Apple 字体优先使用设备已有的 San Francisco、苹方及 SF Mono，不分发字体文件。
 
 发布前可额外检查孕期文章：
 

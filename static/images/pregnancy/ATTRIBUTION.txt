@@ -1,0 +1,27 @@
+Third-party educational illustrations
+====================================
+These images are not personal medical records. They retain their original
+license and are not relicensed under the repository's Apache-2.0 license.
+
+Author / copyright holder: Rice University / OpenStax
+Book: Maternal-Newborn Nursing
+License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+Use: noncommercial educational reproduction, unaltered, hosted locally.
+Noncommercial and ShareAlike conditions continue to apply to these images.
+
+nuchal-translucency.webp
+Figure 13.3: Nuchal Translucency
+Source page:
+https://openstax.org/books/maternal-newborn-nursing/pages/13-1-prenatal-testing-during-the-first-trimester
+Source image:
+https://openstax.org/apps/image-cdn/v1/f=webp/apps/archive/20260604.144757/resources/96739ca7f27af80e8ea23ad32ee2fccc32d3bb04
+
+fetal-presentations.webp
+Figure 15.9: Different Types of Breech Presentation
+Source page:
+https://openstax.org/books/maternal-newborn-nursing/pages/15-1-factors-influencing-the-process-of-labor-and-birth
+Source image:
+https://openstax.org/apps/image-cdn/v1/f=webp/apps/archive/20260604.144757/resources/78fe69c7c7a17a58f174da2683af2bae4d29df6b
+Note: panels (a)-(c) illustrate breech presentations. Panel (d) shows a
+shoulder presentation, which is not a type of breech.

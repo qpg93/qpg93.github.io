@@ -1,0 +1,4 @@
+<details class="reading-note">
+  <summary>{{ .Get 0 | default "Terminology and reading notes" }}</summary>
+  <div class="reading-note-content">{{ .Inner | markdownify }}</div>
+</details>

@@ -25,7 +25,9 @@ class Charts(HTMLParser):
         self.charts = []
         self.current = None
         self.diagrams = 0
-        self.has_images = False
+        self.reading_notes = 0
+        self.images = []
+        self.links = []
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -34,8 +36,13 @@ class Charts(HTMLParser):
             assert a['id'] not in self.ids, f'Duplicate id: {a["id"]}'
             self.ids.add(a['id'])
         self.references.extend(a.get('aria-labelledby', '').split())
+        if tag == 'details' and 'reading-note' in classes:
+            self.reading_notes += 1
+        if tag == 'a' and a.get('href'):
+            self.links.append(a['href'])
         if tag == 'img':
-            self.has_images = True
+            self.images.append(a['src'])
+            assert a.get('alt') and a.get('width') and a.get('height')
         if tag == 'figure' and 'data-chart' in classes:
             self.current = {'key': a['data-chart-key'], 'dots': 0, 'buttons': 0, 'tables': 0, 'lines': 0, 'values': [], 'labels': []}
             self.charts.append(self.current)
@@ -64,9 +71,22 @@ class Charts(HTMLParser):
 
 parsed = Charts()
 parsed.feed(page)
-assert not parsed.has_images, 'Do not publish report images'
+allowed_images = {
+    '/images/pregnancy/nuchal-translucency.webp',
+    '/images/pregnancy/fetal-presentations.webp',
+}
+assert len(parsed.images) == 2 and set(parsed.images) == allowed_images, 'Only approved textbook illustrations are allowed'
+for image in parsed.images:
+    assert (root / image.lstrip('/')).is_file()
+assert (root / 'images/pregnancy/ATTRIBUTION.txt').is_file()
+assert not any('wikipedia.org' in link or 'wikimedia.org' in link for link in parsed.links)
+assert not any('阅读说明' in text for text in [page, source])
+assert 'CC BY-NC-SA 4.0' in page
 assert len(parsed.charts) == 9
 assert parsed.diagrams == 2
+assert parsed.reading_notes == 2
+assert '参考界值' in page and '回望着猜一猜' in page
+assert '术语速查' in page
 expected = {
     'hcg': ['8988 mIU/mL', '20337 mIU/mL', '23226 mIU/mL', '39049 mIU/mL', '67225 mIU/mL'],
     'crl': ['2 mm', '5 mm', '8 mm', '32 mm', '65 mm'],
@@ -99,4 +119,4 @@ for marker in ['800–850', '825', 'CHAT-BASED ESTIMATES', '宫颈', '116.25', '
 assert 'https://www.nhs.uk/pregnancy/your-pregnancy-care/12-week-scan/' in page
 assert 'https://www.nhs.uk/pregnancy/labour-and-birth/if-your-baby-is-breech/' in page
 assert (root / 'js/charts.js').is_file() and (root / 'css/charts.css').is_file()
-print('OK: 9 accessible SVG charts, 2 sourced diagrams, ranges, data tables and metadata/privacy guards')
+print('OK: 9 accessible SVG charts, 2 licensed local textbook images, terminology, ranges, data tables and metadata/privacy guards')
